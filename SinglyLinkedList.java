@@ -3,39 +3,36 @@ public class SinglyLinkedList<E> implements Cloneable {
     public static void main(String[] args)
     {
    
-        SinglyLinkedList<Integer> testList = new SinglyLinkedList<Integer>();
-        testList.addFirst(2);
-        testList.addLast(2);
-        testList.addLast(4);
-        testList.addLast(6);
-        testList.addLast(8);
-        testList.addLast(8);
-        testList.addLast(8);
-        testList.addLast(10);
-        testList.addLast(12);
-        testList.addLast(14);
-        testList.addLast(8);
-        testList.addLast(16);
-        testList.addLast(8);
-        testList.addLast(4);
-        testList.addLast(4);
+            
+      SinglyLinkedList<Integer> testList = new SinglyLinkedList<Integer>();
+      int[]adad={1,3,2,2,6,8,8,8,10,12,13,8,16,8,4,7,4,4};
+
+      for(int i=0;i<adad.length;i++){
+        testList.addLast(adad[i]);;
+      }
+       for (int i = 0; i < 3 ; i++) {
+          testList.removeFirst();
+      }
+       for (int i = 0; i < 3 ; i++) {
+          testList.removeLast();
+      }
+      
+
+      int size = testList.size();
+      System.out.println(testList);
+      testList.find_tekrrari(testList);
+      System.out.println(testList);
+      testList.removeFirst();
+      testList.removeLast();
+      System.out.println(testList);
 
 
-        int size = testList.size();
-        System.out.println(testList);
 
-        // Node n =testList.head;
-        // for (int i = 0; i < size-1 ; i++) {
-        //     System.out.println(n.getElement());
-        //     n=n.getNext();
-        // }
-        //testList.removeMid(2);
-        testList.find_tekrrari(testList);
-        System.out.println(testList);
+  }
 
 
        
-    }
+    
      
     private static class Node<E> {
        private E element;  
@@ -116,47 +113,34 @@ public class SinglyLinkedList<E> implements Cloneable {
         Node head_re=head;    
         for(int q=0;q<size-2;q++){
           head_re=head_re.getNext();
-
         }          
         head_re.setNext(null); 
         tail=head_re;
-      
+        size--;
      }
-
      public void removeMid(int index)
       {        
         Node head_ma=head;  
         Node head_baadi=head;   
         Node head_vasat=head;
-
-    //    if (isEmpty()) return null;              
-    //    E answer = head.getElement();
        for(int j=0;j<index-1;j++)
        {
            head_ma = head_ma.getNext();
-           //System.out.println(head_ma.getElement());
        }
-       //System.out.println();
         for(int j=0;j<index;j++)
        {
            head_vasat = head_vasat.getNext();
-           //System.out.println(head_vasat.getElement());
        }
-       //System.out.println();
        for(int j=0;j<index+1;j++)
        {
            head_baadi = head_baadi.getNext();
-           //System.out.println(head_baadi.getElement());
        }
        head_ma.setNext(head_baadi);
        head_vasat.setNext(null);
        
        size--;
-                          
-       
        if (size == 0)
          tail = null;                           
-    //    return null;
      }
      public void find_tekrrari(SinglyLinkedList s1)
      {
@@ -165,52 +149,19 @@ public class SinglyLinkedList<E> implements Cloneable {
         Node n_head =head;
         for (int j=0;j<size-1;j++)
         {
-        
-        //n=n_head;
         for (int i = 0; i < size-j-1 ; i++) 
         {
-            System.out.print("n_head:");
-            System.out.println(n_head.getElement());
-            System.out.print("n:");
-            System.out.println(n.getElement());
             if (n.getElement()==n_head.getElement())
             {
               if(j==0){
-                System.out.println(s1);
-                //n=n_head.getNext();
                 n_head=n_head.getNext();
-                //System.out.println(n_head.getElement());
                 s1.removeFirst();
-                System.out.println(s1);
-                
-                //break;
-
               }
-              // else if(j==size-2){
-              //    System.out.println(s1);
-              //   //n=n_head.getNext();
-              //   n_head=n_head.getNext();
-              //   //System.out.println(n_head.getElement());
-              //   s1.removeLast();
-              //   System.out.println(s1);
-                
-              //   //break;
-              // }
               else{
-                System.out.println(s1);
-                //n=n_head.getNext();
                 n_head=n_head.getNext();
-                //System.out.println(n_head.getElement());
                 s1.removeMid(j);
-                System.out.println(s1);
-                
-                //break;
-
               }
-                
-                
             }
-            //System.out.println(s1);
             n=n.getNext();
         }
         if(j!=size-1){
@@ -218,10 +169,8 @@ public class SinglyLinkedList<E> implements Cloneable {
         n_head=n_head.getNext();
 
         }
-        
-        
-    }   
-    s1.removeLast();
+
+    }  
     
      }
    
